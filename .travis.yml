@@ -1,3 +1,4 @@
+sudo: true
 language: node_js
 node_js:
   - "0.12"
@@ -5,7 +6,10 @@ env:
   global:
     - EXTJS_VERSION="5.1.0"
     - SENCHA_CMD_VERSION="5.1.2.52"
+    - secure: Uy9kJf6/qP6U0rQS9n7RRkvBMKZa/0Hy+8q6nWtPv+Wy4eBGW70aruveRTALgP7KODkh7PVd/4Vbr6+jWYKomcJaTY7CekjOjwplKmWvszkEnDRf2x7OptwfB1HwM0D3yguA+yNINh4IkFZJToKJ6qejRcp4KeFU4m+OxuiytT8=
 before_script:
+  # install ghp-import
+  - sudo pip install ghp-import
   # download & install ext-js
   - "wget cdn.sencha.com/ext/gpl/ext-${EXTJS_VERSION}-gpl.zip"
   - "unzip -q ext-${EXTJS_VERSION}-gpl.zip"
@@ -23,3 +27,6 @@ before_script:
 script:
   - npm test
   - ./node_modules/jscs/bin/jscs packages
+after_success:
+  - ghp-import -n packages/mf-grid-filter-form/docs
+  - git push -fq https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages

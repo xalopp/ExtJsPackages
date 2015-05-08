@@ -1,6 +1,10 @@
 # ExtJsPackages <a href="https://travis-ci.org/mayflower/ExtJsPackages/"><img src="https://api.travis-ci.org/mayflower/ExtJsPackages.svg" alt="Build Status" style="max-width:100%;"></a>
 ExtJS Packages by Mayflower
 
+# Documentation
+
+* [filterform API Documentation](http://xalopp.github.io/ExtJsPackages/api/)
+
 ## Requirements
 
 * ExtJS-5.1 [direct download link](http://cdn.sencha.com/ext/gpl/ext-5.1.0-gpl.zip)
