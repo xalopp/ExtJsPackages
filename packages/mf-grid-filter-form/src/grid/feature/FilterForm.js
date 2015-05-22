@@ -55,16 +55,64 @@ Ext.define('Mayflower.grid.feature.FilterForm', {
 
         grid.on({
             beforerender: function (grid) {
-                var filterItems = me.buildFilterOptionItems(grid.getColumnManager().getColumns());
+                var columns = grid.getColumnManager().getColumns(),
+                    filterItems = me.buildFilterOptionItems(columns);
 
                 if (filterItems.length === 0) {
                     return;
                 }
 
+                if (me.hasFormPositionFilterOption(filterItems)) {
+                    filterItems = me.getColumnsSortedByFormPosition(filterItems);
+                }
                 me.form.add(filterItems);
+
                 grid.insertDocked(0, me.form);
             }
         });
+    },
+
+    /**
+     * Check on of the columns has the property "formPosition"
+     *
+     * @param {Ext.grid.column.Column[]} columns
+     * @returns {boolean}
+     *
+     * @private
+     */
+    hasFormPositionFilterOption: function (columns) {
+        var hasFormPosition = false;
+        Ext.Array.each(columns, function (item) {
+            var hasItemFormPosition = false;
+
+            if (item.formPosition !== undefined) {
+                hasItemFormPosition = true;
+            }
+
+            hasFormPosition = hasFormPosition || hasItemFormPosition;
+        });
+
+        return hasFormPosition;
+    },
+
+    /**
+     * Sort the columns by the "formPosition" property.
+     *
+     * @param {Ext.grid.column.Column[]} columns
+     * @returns {Ext.grid.column.Column[]}
+     *
+     * @private
+     */
+    getColumnsSortedByFormPosition: function (columns) {
+        var sortedColumns = Ext.Array.sort(columns, function (a, b) {
+            if (a.formPosition !== undefined && b.formPosition !== undefined) {
+                return (a.formPosition < b.formPosition) ? -1 : 1;
+            }
+
+            return -1;
+        });
+
+        return sortedColumns;
     },
 
     /**
