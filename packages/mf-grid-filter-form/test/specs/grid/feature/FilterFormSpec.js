@@ -287,8 +287,7 @@ describe('Mayflower grid filter form test suite', function () {
 
             Ext.Array.each(testCases, function (data) {
                 expect(feature.getColumnsSortedByFormPosition(data.filterItems)).toEqual(data.sortedItems);
-
-            })
+            });
         });
     });
 
