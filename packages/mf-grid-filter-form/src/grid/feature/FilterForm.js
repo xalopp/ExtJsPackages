@@ -109,6 +109,10 @@ Ext.define('Mayflower.grid.feature.FilterForm', {
                 return (a.formPosition < b.formPosition) ? -1 : 1;
             }
 
+            if (a.formPosition === undefined) {
+                return 1;
+            }
+            // b.formPosition is undefined
             return -1;
         });
 

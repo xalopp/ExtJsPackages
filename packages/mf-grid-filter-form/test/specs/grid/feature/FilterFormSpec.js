@@ -261,7 +261,8 @@ describe('Mayflower grid filter form test suite', function () {
             }, {
                 filterItems: [{
                     fieldLabel: 'id',
-                    name: 'Id'
+                    name: 'Id',
+                    lala: {}
                 }, {
                     fieldLabel: 'name',
                     name: 'Name',
@@ -281,7 +282,35 @@ describe('Mayflower grid filter form test suite', function () {
                     formPosition: 1
                 }, {
                     fieldLabel: 'id',
-                    name: 'Id'
+                    name: 'Id',
+                    lala: {}
+                }]
+            }, {
+                filterItems: [{
+                    fieldLabel: 'name',
+                    name: 'Name',
+                    formPosition: 0
+                }, {
+                    fieldLabel: 'description',
+                    name: 'Description',
+                    formPosition: 1
+                }, {
+                    fieldLabel: 'id',
+                    name: 'Id',
+                    lala: {}
+                }],
+                sortedItems: [{
+                    fieldLabel: 'name',
+                    name: 'Name',
+                    formPosition: 0
+                }, {
+                    fieldLabel: 'description',
+                    name: 'Description',
+                    formPosition: 1
+                }, {
+                    fieldLabel: 'id',
+                    name: 'Id',
+                    lala: {}
                 }]
             }];
 
